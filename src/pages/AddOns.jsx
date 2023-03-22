@@ -79,19 +79,20 @@ function isChecked(value) {
   return (
     <div className="page-container">
       <SideBar id={3} />
-      <div className='add-on-info'>
-      
-      <h1>Pick add-ons</h1>
-      <p>Add-ons help enhance your gaming experience.</p>
-   
-        {addOnBoxes}
-       
-      <div className='section-btns'>
+      <div className="form-container">
+        <div className='add-on-info'>
+        <div className='section-title'>
+          <h1>Pick add-ons</h1>
+          <p>Add-ons help enhance your gaming experience.</p>
+        </div>
+        <div className="add-on-container">
+            {addOnBoxes}
+        </div>
+        </div>
+        <div className='section-btns'>
             <button className='go-back-button' onClick={() => navigate('/select-plan')}>Go Back</button>
             <button type="submit" onClick={handleSubmit}>Submit</button>
         </div>
-
-      
       </div>
     </div>
   )
