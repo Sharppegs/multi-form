@@ -12,24 +12,27 @@ function MyAddOns(props) {
     return (
         <div
           className="add-on-checkbox"
-          styles={hstyles} 
+          style={hstyles} 
           value={props.value} 
           key={nanoid()}
+          id={props.id}
+          onClick={() => props.chosen(props.id)}
           >
-        <input type="checkbox" id="checkbox" onChange={() => props.chosen(props.value)} />
+            <img src={props.isSelected ? "/checkbox.png" : "/empty-checkbox.png"} alt="checkbox" />
   
-        <div className='checkbox-details'>
+          <div className='checkbox-details'>
               <p className='add-on-title'>{props.name}</p>
               <p className='add-on-subtitle'>{props.subtitle}</p>
-            </div>
-            <div className='checkbox-price'>
+          </div>
+
+          <div className='checkbox-price'>
               <p>{props.price}</p>
-            </div>
+          </div>
         </div>
+        
        
     )
-    
-  
+
 }
 
 export default MyAddOns

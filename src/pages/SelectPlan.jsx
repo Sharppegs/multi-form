@@ -13,32 +13,32 @@ function SelectPlan() {
     [
       {
         image: "/icon-arcade.svg",
-        id: nanoid(), 
+        id: 0, 
         planName: "Arcade",
         price: "$9/mo",
-        value: {plan: "Arcade", price: 9},
+        value: {id: 0, name: "Arcade", price: 9},
         isSelected: false
       },
       {
         image: "/icon-advanced.svg",
-        id: nanoid(), 
+        id: 1, 
         planName: "Advanced",
         price: "$12/mo",
-        value: {plan: "Advanced", price: 12},
+        value: {id: 1, name: "Advanced", price: 12},
         isSelected: false
       },
       {
         image: "/icon-pro.svg",
-        id: nanoid(), 
+        id: 2, 
         planName: "Pro",
         price: "$15/mo",
-        value: {plan: "Pro", price: 15},
+        value: {id: 2, name: "Pro", price: 15},
         isSelected: false
       },
 
     ])
   
-  const {userData, addUserData, clearUserData} = useContext(Context)
+  const {userData, addUserData, clearUserData, addUserPrice} = useContext(Context)
   const navigate = useNavigate()
   console.log(userData)
 
@@ -68,6 +68,7 @@ function SelectPlan() {
     plans.map(plan => {
       if(plan.isSelected) {
         addUserData(plan.value)
+        addUserPrice(plan.value.price)
       }
     })
     setTimeout(() => {
@@ -100,7 +101,7 @@ function goBack() {
 
           <div className='section-btns'>
               <button className='go-back-button' onClick={goBack}>Go Back</button>
-              <button type="submit" onClick={handleSubmit}>Next Step</button>
+              <button type="submit" className='next-button' onClick={handleSubmit}>Next Step</button>
           </div>
         </div>
       </div>

@@ -69,7 +69,7 @@ function PersonalInfo() {
     </div>
 
     <div className='section-btns end'>
-      <button type="submit" className='submit'>Next Step</button>
+      <button type="submit" className='next-button'>Next Step</button>
     </div>
 
       </Form>

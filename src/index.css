@@ -25,7 +25,11 @@ html {
   text-decoration-skip-ink: "auto";
 }
 
-@media (min-width: 868px) {
+button:hover {
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
   body {
     background-color: #fff;
   }
@@ -79,7 +83,7 @@ html {
 }
 
 
-@media (min-width: 868px) {
+@media (min-width: 768px) {
 
 .sidebar {
   padding: 3em 2em;
@@ -764,12 +768,12 @@ label.checkbox {
   font-weight: normal;
 }
 
-button[type="submit"] {
+.next-button {
   margin-top: 1rem;
   background: #022959;
 }
 
-button[type="submit"]:hover {
+.next-button:hover {
   background: #164A8A
 }
 
@@ -785,9 +789,11 @@ button[type="submit"]:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  
 }
 
-.section-title h1 {
+.section-title h1,
+.section-title h2 {
   margin-bottom: 0.5em;
   color: #022959;
   font-size: 2rem;
@@ -803,7 +809,9 @@ button[type="submit"]:hover {
   justify-content: space-between;
   position: absolute;
   bottom: 10px; 
-  right: 30px;
+  right: 20px;
+  bottom: 10px;
+  left: 20px;
 }
 
 .end {
@@ -815,7 +823,7 @@ button[type="submit"]:hover {
 .add-on-info {
   background-color: #fff;
   display: flex;
-  margin: 1.5em;
+  /* margin: 1.5em 0.5em; */
   padding: 1em;
   flex-direction: column;
   justify-content: space-around;
@@ -823,11 +831,14 @@ button[type="submit"]:hover {
   box-shadow: 0.5em 0.5em 1.5em -1em;
   position: absolute;
   top: 75px;
+  left: 0;
+  right: 0;
+  margin: 1.5em auto;
+  width: 90%;
   /* height: 90vh; */
   
   
 }
-
 
 .box-container {
   display: flex;
@@ -857,6 +868,21 @@ button[type="submit"]:hover {
   height: 50px;
 }
 
+.add-on-container,
+.totals-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  justify-content: space-between;
+  margin-top: 2em; 
+}
+
+.totals-container {
+  background-color: #F8F9FF;
+  margin-bottom: 2em;
+  padding: 1em;
+}
+
 .add-on-checkbox {
   max-width: 550px;
   height: 85px;
@@ -866,23 +892,22 @@ button[type="submit"]:hover {
   align-items: center;
   border: 1px solid blue;
   border-radius: 10px;
-  padding: 0.5em 1em;
+  padding: 0.5em;
 }
 
-.checkbox-details {
-  line-height: 1.4;
+.add-on-checkbox:hover {
+  cursor: pointer;
 }
-
 
 .add-on-title {
   font-weight: bold;
-  margin-bottom: 1rem;
-  font-size: 16px;
+  margin-bottom: 0.25em;
+  font-size: 14px;
 }
 
 .add-on-subtitle { 
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .checkbox-price {
@@ -891,10 +916,45 @@ button[type="submit"]:hover {
 
 .checkbox-price p {
   margin-bottom: 0;
+  text-align: center;
+}
+
+.final-choice-plan, 
+.final-choice-addon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #022959;
+}
+
+.final-choice-plan {
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid rgba(150, 153, 170, 0.5);
+}
+
+.final-choice-addon {
+  color: #9699AA;
+}
+
+.totals {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+}
+
+.total-text {
+  color: #9699AA;
+}
+
+.confirm-btn {
+  background-color: #928CFF;
+  color: #fff;
+  border: none;
 }
 
 
-@media (min-width: 868px) {
+@media (min-width: 768px) {
   .page-container {
     flex-direction: row;
   }
@@ -908,6 +968,7 @@ button[type="submit"]:hover {
   padding: 3em 4em 1em 4em;
   box-shadow: none;
   position: static;
+  width: 100%;
 }
 
 .section-title h1 {
@@ -929,7 +990,7 @@ button[type="submit"]:hover {
 }
 
 .plan-option {
-  width: 180px;
+  max-width: 180px;
   height: 210px;
   padding: 1em;
   display: flex;
@@ -941,7 +1002,29 @@ button[type="submit"]:hover {
 
 .section-btns {
   position: static;
+  margin-left: 3em;
+  padding: 0 4em;
 }
+
+.add-on-checkbox {
+  padding: 0.5em 1em;
+}
+
+.checkbox-details {
+  line-height: 1.4;
+}
+
+
+.add-on-title {
+  margin-bottom: 0.5em;
+  font-size: 16px;
+}
+
+.add-on-subtitle { 
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
 
 
 }

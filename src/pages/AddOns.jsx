@@ -10,6 +10,7 @@ import { nanoid } from 'nanoid';
 
 
 function AddOns() {
+  
   const [addOns, setAddOns] = useState(
     [
       {
@@ -39,16 +40,19 @@ function AddOns() {
       }
     ])
 
-  const [chosenItems, setChosenItems] = useState([])
-  
-  const [addOnValues, setAddOnValues] = useState([])
-  const {addUserData} = useContext(Context)
+  const {userData, addUserData, removeUserDataItem, userPrice, addUserPrice, clearUserPrice} = useContext(Context)
   const navigate = useNavigate()
+ console.log(userPrice)
 
-function isChecked(value) {
-  console.log(value)
-  
+
+  function handleChange(id) {
+    setAddOns(oldPlans => oldPlans.map(plan => {
+      return plan.id === id ?
+      {...plan, isSelected: !plan.isSelected} :
+      {...plan, isSelected: plan.isSelected}
+    }))
 }
+
   
   const addOnBoxes = addOns.map((option) => 
     <MyAddOns
@@ -59,21 +63,30 @@ function isChecked(value) {
             price={option.price}
             value={option.value}
             isSelected={option.isSelected}
-            chosen={isChecked}
+            chosen={handleChange}
+            
      />
   )
 
   function handleSubmit() {
-    
-    console.log(e.firstName)
-    addUserData(e)
+    addOns.map(addOn => {
+      if(addOn.isSelected) {
+        addUserData(addOn.value)
+        addUserPrice(addOn.value.price)
+      }
+    })
     setTimeout(() => {
-      navigate('/add-ons', { replace: true })
-    }, 2000)
+      navigate('/Todo', { replace: true })
+    }, 500)
 
   }
 
-
+  function goBack() {
+    clearUserPrice()
+    removeUserDataItem(userData[1]?.name)
+    navigate('/select-plan', { replace: true })
+  
+}
   
 
   return (
@@ -90,9 +103,9 @@ function isChecked(value) {
         </div>
         </div>
         <div className='section-btns'>
-            <button className='go-back-button' onClick={() => navigate('/select-plan')}>Go Back</button>
-            <button type="submit" onClick={handleSubmit}>Submit</button>
-        </div>
+              <button className='go-back-button' onClick={goBack}>Go Back</button>
+              <button type="submit" className='next-button' onClick={handleSubmit}>Next Step</button>
+          </div>
       </div>
     </div>
   )

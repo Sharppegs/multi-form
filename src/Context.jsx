@@ -5,13 +5,32 @@ const Context = createContext()
 
 function ContextProvider({children}) {
     const [userData, setUserData] = useState([]) 
+    const [userPrice, setUserPrice] = useState([]) 
    
     function addUserData(userInfo) {
       setUserData(prevInfo => [...prevInfo, userInfo])  
   }
 
+    function removeUserDataItem(name) {
+        console.log(name)
+        setUserData(prevItems => prevItems.filter((item) => item.name !== name))
+        
+  }
+
+  function addUserPrice(price) {
+    setUserPrice(prevPrice => [...prevPrice, price])  
+  }
+
+function removeUserPrice(price) {
+    setUserPrice(prevPrice => prevPrice.filter((item) => item !== price))
+}
+
   function clearUserData() {
     setUserData([])
+}
+
+  function clearUserPrice() {
+    setUserPrice([])
 }
 
       
@@ -19,7 +38,12 @@ function ContextProvider({children}) {
         <Context.Provider value={{
             userData,
             addUserData,
-            clearUserData
+            clearUserData,
+            userPrice,
+            addUserPrice,
+            removeUserDataItem,
+            clearUserPrice,
+            removeUserPrice
           }}>
             {children}
         </Context.Provider>
