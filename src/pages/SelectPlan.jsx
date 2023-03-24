@@ -8,7 +8,7 @@ import PlanOption from '../components/PlanOption.jsx';
 import {nanoid} from 'nanoid'
 import SideBar from '../components/SideBar'
 
-function SelectPlan() {
+function SelectPlan(props) {
   const [plans, setPlans] = useState(
     [
       {
@@ -16,7 +16,9 @@ function SelectPlan() {
         id: 0, 
         planName: "Arcade",
         price: "$9/mo",
-        value: {id: 0, name: "Arcade", price: 9},
+        yearPrice: "$90/yr",
+        value: {id: 0, name: "Arcade", price: 9, year: 90},
+        yearValue: {id: "0y", name: "Pro", price: 90},
         isSelected: false
       },
       {
@@ -24,7 +26,9 @@ function SelectPlan() {
         id: 1, 
         planName: "Advanced",
         price: "$12/mo",
-        value: {id: 1, name: "Advanced", price: 12},
+        yearPrice: "$120/yr",
+        value: {id: 1, name: "Advanced", price: 12, year: 120},
+        yearValue: {id: "1y", name: "Pro", price: 150},
         isSelected: false
       },
       {
@@ -32,7 +36,9 @@ function SelectPlan() {
         id: 2, 
         planName: "Pro",
         price: "$15/mo",
-        value: {id: 2, name: "Pro", price: 15},
+        yearPrice: "$150/yr",
+        value: {id: 2, name: "Pro", price: 15, year: 150},
+        yearValue: {id: "2y", name: "Pro", price: 150},
         isSelected: false
       },
 
@@ -57,7 +63,10 @@ function SelectPlan() {
       image={box.image}
       name={box.planName}
       price={box.price}
+      yearPrice={box.yearPrice}
       value={box.value}
+      yearValue={box.yearValue}
+      mode={props.mode}
       isSelected={box.isSelected}
       chosen={optionChosen}
       
@@ -66,9 +75,12 @@ function SelectPlan() {
 
   function handleSubmit() {
     plans.map(plan => {
-      if(plan.isSelected) {
+      if(props.mode && plan.isSelected) {
         addUserData(plan.value)
         addUserPrice(plan.value.price)
+      } else if(!props.mode && plan.isSelected) {
+        addUserData(plan.yearValue)
+        addUserPrice(plan.yearValue.price)
       }
     })
     setTimeout(() => {
@@ -85,7 +97,7 @@ function goBack() {
   
 
   return (
-    <div className="page-container">
+    <div className={props.mode ? "page-container": "page-container-yearly"}>
       <SideBar id={2} />
       
       <div className="form-container">
@@ -97,6 +109,13 @@ function goBack() {
           <div className='box-container'>
             {PlanBoxes}
           </div>
+          <div className="toggler" >
+                <p className="toggler--monthly">Monthly</p>
+                <div className="toggler--slider" onClick={props.toggle} >
+                    <div className="toggler--slider--circle"></div>
+                </div>
+                <p className="toggler--yearly">Yearly</p>
+            </div>
         </div>
 
           <div className='section-btns'>

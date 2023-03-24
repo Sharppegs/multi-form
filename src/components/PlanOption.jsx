@@ -16,7 +16,9 @@ function PlanOption(props) {
             <img className='option-image' src={props.image} />
             <div className='plan-name-price'>
               <h3>{props.name}</h3>
-              <p>{props.price}</p>
+              <p className='plan-price'>{props.mode ? `${props.price}` : `${props.yearPrice}`}</p>
+              <p className={props.mode ? "hidden-months" : "months-free"}>2 months free</p>
+
             </div>
     </div>
   )

@@ -5,20 +5,15 @@ import {Context} from "../Context.jsx"
 import SideBar from '../components/SideBar';
 import { nanoid } from 'nanoid';
 
-function Todo() {
+function Todo(props) {
   const {userData, addUserData, clearUserData, removeUserDataItem, userPrice, removeUserPrice} = useContext(Context)
   const navigate = useNavigate()
   const totalPrice = userPrice.reduce((a,b) => a + b, 0)
   console.log(userData)
 
       function handleSubmit() {
-        addOns.map(addOn => {
-          if(addOn.isSelected) {
-            addUserData(addOn.value)
-          }
-        })
         setTimeout(() => {
-          navigate('/Todo', { replace: true })
+          navigate('/submitted', { replace: true })
         }, 500)
     
       }
@@ -41,7 +36,7 @@ function Todo() {
       <div className='add-on-info'>
       <div className='section-title'>
         <h1>Finishing up</h1>
-        <h2>Welcome aboard, {userData[0]?.name}!</h2>
+        <p>Welcome aboard, {userData[0]?.name}!</p>
         <p>Double-check everything looks OK before confirming.</p>
       </div>
       <div className="totals-container">
@@ -50,12 +45,13 @@ function Todo() {
             <h3>{userData[1]?.name}</h3>
             <p>change</p>
           </div>
-          <h3>${userData[1]?.price}/mo</h3>
+          <h3>{props.mode ? `$${userData[1]?.price}/mo` : `$${userData[1]?.price}/yr`}</h3>
         </div>
         {userData.slice(2).map(item => 
           <div className='final-choice-addon' key={nanoid()}>
               <p>{item.name}</p>
-            <p>${item.price}/mo</p>
+            <p>{props.mode ? `$${item.price}/mo` : `$${item.price}/yr`}</p>
+            
           </div>)}
           {/* <div className='final-choice-plan'>
             <p>{userData[1]?.name}</p>
@@ -79,7 +75,7 @@ function Todo() {
           </div> */}
       </div>
       <div className='totals'>
-        <p className="total-text">Total (per month):</p>
+        <p className="total-text">Total (per {props.mode ? "month" : "year"}):</p>
         <h3>${totalPrice}</h3>
       </div>
       </div>

@@ -31,6 +31,7 @@ function removeUserPrice(price) {
 
   function clearUserPrice() {
     setUserPrice([])
+    
 }
 
       

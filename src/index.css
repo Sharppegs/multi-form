@@ -238,10 +238,6 @@ form a {
   text-decoration-thickness: 2px;
 }
 
-label {
-  
-}
-
 @media (hover: hover) {
   a:hover {
     text-decoration-color: var(--gray-800);
@@ -328,7 +324,6 @@ select {
 
 select {
   margin: 0;
-  -webkit-appearance: none;
   box-sizing: border-box;
   padding: 0.65rem 0.5rem;
   font-size: 1rem;
@@ -780,10 +775,13 @@ label.checkbox {
 
 /* page layout */
 
-.page-container {
+.page-container,
+.page-container-yearly {
   display: flex;
   flex-direction: column;
 }
+
+
 
 .form-container {
   display: flex;
@@ -820,7 +818,8 @@ label.checkbox {
 
 .personal-info,
 .plan-info,
-.add-on-info {
+.add-on-info,
+.submitted {
   background-color: #fff;
   display: flex;
   /* margin: 1.5em 0.5em; */
@@ -861,6 +860,22 @@ label.checkbox {
 .plan-option:hover,
 .plan-option:focus {
   cursor: pointer;
+}
+
+.plan-name-price {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.months-free {
+  visibility: visible;
+  font-size: 12px;
+  color: #022959;
+}
+
+.hidden-months {
+  visibility: hidden;
 }
 
 .option-image {
@@ -953,15 +968,103 @@ label.checkbox {
   border: none;
 }
 
+.submitted-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.submitted-text img {
+  width: 100px;
+}
+
+/* toggler */
+
+.toggler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1em;
+  background-color: #F8F9FF;
+  padding: 1em;
+}
+
+@media(min-width: 768px) {
+  .toggler {
+    margin-top: 2em;
+    padding: 0.25em;
+  }
+
+  
+}
+
+.toggler p {
+  font-weight: 600;
+}
+
+.toggler--slider {
+  width: 30px;
+  height: 20px;
+  background-color: #022959;
+  border-radius: 2rem;
+  margin-inline: 7px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid black;
+  box-sizing: content-box;
+  padding: 0 0.25em;
+}
+
+.toggler--slider--circle {
+  height: 12px;
+  width: 12px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.toggler--monthly {
+  color: #2B283A;
+}
+
+/* Yearly Mode */
+
+
+.page-container-yearly .toggler--slider {
+  border-color: rgb(167, 165, 165);
+  
+}
+
+.page-container-yearly .toggler--monthly {
+  color: #918E9B;
+}
+
+.toggler--yearly {
+  color: #D5D4D8;
+}
+
+.page-container-yearly .toggler--yearly {
+  color: #020202;
+}
+
+.page-container-yearly .toggler--slider {
+  justify-content: flex-end;
+}
 
 @media (min-width: 768px) {
-  .page-container {
+  .page-container,
+  .page-container-yearly {
     flex-direction: row;
   }
 
   .personal-info,
   .plan-info,
-  .add-on-info {
+  .add-on-info,
+  .submitted {
   margin-left: 3em;
   margin-top: 0;
   margin-bottom: 0;
@@ -998,6 +1101,10 @@ label.checkbox {
   justify-content: space-between;
   border-radius: 15px;
   
+}
+
+.plan-price {
+  color: #9699AA;
 }
 
 .section-btns {

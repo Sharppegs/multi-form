@@ -11,16 +11,23 @@ import PersonalInfo from './pages/PersonalInfo'
 import SelectPlan from './pages/SelectPlan'
 import AddOns from './pages/AddOns'
 import Todo from './pages/Todo'
+import Submitted from './pages/submitted'
 
 function App() {
-  
+  const [monthly, setMonthly] = useState(true)
+    
+  function toggleMode() {
+      setMonthly(prevMode => !prevMode)
+  }
   return (
     <div>
       <Routes>
         <Route path="/" element={<PersonalInfo />} />
-        <Route path="/select-plan" element={<SelectPlan />} />
-        <Route path="/add-ons" element={<AddOns />} />
-        <Route path="/todo" element={<Todo />} />
+        <Route path="/select-plan" element={<SelectPlan mode={monthly} 
+        toggle={toggleMode} />} />
+        <Route path="/add-ons" element={<AddOns mode={monthly} />} />
+        <Route path="/todo" element={<Todo mode={monthly} />} />
+        <Route path="/submitted" element={<Submitted />} />
       </Routes>
     </div>
   )

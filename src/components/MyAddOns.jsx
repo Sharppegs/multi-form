@@ -26,7 +26,7 @@ function MyAddOns(props) {
           </div>
 
           <div className='checkbox-price'>
-              <p>{props.price}</p>
+              <p>{props.mode ? `${props.price}` : `${props.yearPrice}`}</p>
           </div>
         </div>
         

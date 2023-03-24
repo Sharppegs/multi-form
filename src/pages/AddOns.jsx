@@ -9,7 +9,7 @@ import SideBar from '../components/SideBar'
 import { nanoid } from 'nanoid';
 
 
-function AddOns() {
+function AddOns(props) {
   
   const [addOns, setAddOns] = useState(
     [
@@ -18,7 +18,9 @@ function AddOns() {
         name: "Online Service",
         subtitle: "Access to multiplayer games",
         price: "$1/mo",
+        year: "$10/yr",
         value: {id: 0, name: "Online Service", price: 1},
+        yearValue: {id: "0y", name: "Online Service", price: 10},
         isSelected: false
       },
       {
@@ -27,7 +29,9 @@ function AddOns() {
         name: "Larger Storage",
         subtitle: "Extra 1TB of cloud save",
         price: "$2/mo",
+        year: "$20/yr",
         value: {id: 1, name: "Larger Storage", price: 2},
+        yearValue: {id: "1y", name: "Larger Storage", price: 20},
         isSelected: false
       },
       {
@@ -35,7 +39,9 @@ function AddOns() {
         name: "Customizable Profile",
         subtitle: "Custom theme on your profile",
         price: "$2/mo",
+        year: "$20/yr",
         value: {id: 2, name: "Customizable Profile", price: 2},
+        yearValue: {id: "2y", name: "Customizable Profile", price: 20},
         isSelected: false
       }
     ])
@@ -43,6 +49,7 @@ function AddOns() {
   const {userData, addUserData, removeUserDataItem, userPrice, addUserPrice, clearUserPrice} = useContext(Context)
   const navigate = useNavigate()
  console.log(userPrice)
+ console.log(props.mode)
 
 
   function handleChange(id) {
@@ -61,7 +68,10 @@ function AddOns() {
             name={option.name}
             subtitle={option.subtitle}
             price={option.price}
+            yearPrice={option.year}
             value={option.value}
+            yearValue={option.yearValue}
+            mode={props.mode}
             isSelected={option.isSelected}
             chosen={handleChange}
             
@@ -70,9 +80,12 @@ function AddOns() {
 
   function handleSubmit() {
     addOns.map(addOn => {
-      if(addOn.isSelected) {
+      if(props.mode && addOn.isSelected) {
         addUserData(addOn.value)
         addUserPrice(addOn.value.price)
+      } else if(!props.mode && addOn.isSelected) {
+        addUserData(addOn.yearValue)
+        addUserPrice(addOn.yearValue.price)
       }
     })
     setTimeout(() => {
