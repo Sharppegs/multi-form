@@ -970,7 +970,7 @@ label.checkbox {
 }
 
 .confirm-btn {
-  background-color: #928CFF;
+  background-color: #928CFF !important;
   color: #fff;
   border: none;
 }
