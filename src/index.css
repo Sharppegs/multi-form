@@ -786,7 +786,13 @@ label.checkbox {
 .form-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  
+}
+
+.form-container-submitted {
+  display: grid;
+  place-content: center;
   
 }
 
@@ -794,7 +800,7 @@ label.checkbox {
 .section-title h2 {
   margin-bottom: 0.5em;
   color: #022959;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .section-title p {
@@ -806,9 +812,8 @@ label.checkbox {
   display: flex;
   justify-content: space-between;
   position: absolute;
-  bottom: 10px; 
   right: 20px;
-  bottom: 10px;
+  bottom: 30px;
   left: 20px;
 }
 
@@ -848,13 +853,14 @@ label.checkbox {
 }
 
 .plan-option {
-  padding: 1em;
+  padding: 0.5em 1em;
   display: flex;
   width: 90%;
   justify-content: start;
   gap: 1.5em;
   border-radius: 15px;
   border: 1px solid #D6D9E6;
+  height: 80px;
 }
 
 .plan-option:hover,
@@ -866,6 +872,7 @@ label.checkbox {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+  font-size: 14px
 }
 
 .months-free {
@@ -975,6 +982,7 @@ label.checkbox {
   text-align: center;
   justify-content: center;
   align-items: center;
+  max-width: 575px;
 }
 
 .submitted-text img {
@@ -989,7 +997,8 @@ label.checkbox {
   justify-content: center;
   margin-top: 1em;
   background-color: #F8F9FF;
-  padding: 1em;
+  padding: 0.5em 1em;
+  z-index: 20;
 }
 
 @media(min-width: 768px) {
@@ -1093,7 +1102,7 @@ label.checkbox {
 }
 
 .plan-option {
-  max-width: 180px;
+  width: 180px;
   height: 210px;
   padding: 1em;
   display: flex;
@@ -1105,6 +1114,10 @@ label.checkbox {
 
 .plan-price {
   color: #9699AA;
+}
+
+.plan-name-price {
+  font-size: 16px;
 }
 
 .section-btns {
@@ -1132,6 +1145,8 @@ label.checkbox {
   font-size: 14px;
 }
 
-
+.form-container-submitted {
+  margin-left: 1em;
+}
 
 }

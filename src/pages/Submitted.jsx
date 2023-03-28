@@ -28,11 +28,11 @@ function Submitted() {
   return (
     <div className="page-container">
     <SideBar id={4} />
-    <div className="form-container">
+    <div className="form-container-submitted">
     <div className="submitted">
         <div className='submitted-text'>
             <img src="/icon-thank-you.svg" alt="" />
-            <p>Thank you!</p>
+            <h1>Thank you!</h1>
             <p>Thanks for confirming your subscription! We hope you have fun using our platform. 
                 If you ever need support, please feel free to email us at:</p>
             <a href="#"><h4>support@loremgaming.com.</h4></a>

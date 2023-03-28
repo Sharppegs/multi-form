@@ -106,9 +106,6 @@ function goBack() {
             <h1>Select Plan</h1>
             <p>You have the option of monthly or yearly billing.</p>
           </div>
-          <div className='box-container'>
-            {PlanBoxes}
-          </div>
           <div className="toggler" >
                 <p className="toggler--monthly">Monthly</p>
                 <div className="toggler--slider" onClick={props.toggle} >
@@ -116,6 +113,10 @@ function goBack() {
                 </div>
                 <p className="toggler--yearly">Yearly</p>
             </div>
+          <div className='box-container'>
+            {PlanBoxes}
+          </div>
+          
         </div>
 
           <div className='section-btns'>
